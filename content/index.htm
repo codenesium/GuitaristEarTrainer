@@ -13,13 +13,75 @@
 
 </head>
 
+<style>
+.push
+{
+margin-top:100px;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+</style>
+
+<script src="js/opensheetmusicdisplay.min.js"></script>
+
+<script>
+	function renderSheetMusic ()
+	{
+		var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-music");
+		osmd.load("https://wpmedia.musicxml.com/wp-content/uploads/2017/12/BeetAnGeSample.musicxml").then(
+		  function() {
+			osmd.render();
+		  }
+		);
+		document.getElementById("sheet-music").classList.remove('hidden');
+	}
+</script>
 
 <body>
 
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Guitarist Ear Trainer</a>
+</nav>
 
+<div class="container text-center push">
+	<h3>1</h3>
+	<br />
+	<audio controls>
+	  <source src="https://github.com/codenesium/GuitaristEarTrainer/raw/master/audio/1/1.mp3" type="audio/mpeg">
+	Your browser does not support the audio element.
+	</audio>
+	<br />
+	<br />
+	<button type="button" class="btn btn-primary" onclick="renderSheetMusic()">Reveal</button>
+	<button type="button" class="btn btn-light">Next</button>
+	<div id="sheet-music" name="sheet-music" class="hidden">
+
+	</div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+	<span class="text-muted"></span>
+  </div>
+</footer>
+	
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 </html>
