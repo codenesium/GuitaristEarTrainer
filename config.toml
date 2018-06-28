@@ -1,6 +1,6 @@
 baseURL = "http://guitaristeartrainer.com/"
 languageCode = "en-us"
-title = "guitarist Ear Trainer"
+title = "Guitarist Ear Trainer"
 theme = "minimal"
 disqusShortname = "username" # delete this to disable disqus comments
 googleAnalytics = ""
