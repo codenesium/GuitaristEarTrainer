@@ -1,8 +1,12 @@
 {
+"tracks":[
+{
 "id":1,
 "name":"1",
 "difficulty":1,
 "audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/audio.mp3",
 "musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/file.musicxml",
 "tags":["country"]
+}
+]
 }

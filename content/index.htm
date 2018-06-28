@@ -36,37 +36,24 @@ a.report-a-problem:hover { color: white; }
 
 <script>
 	var id = 1;
-	var trackSettings = null;
 	var siteSettings = null;
 	
 	function loadTrack(id)
-	{
-		var cachebuster = Math.round(new Date().getTime() / 1000)
-		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/" + id + "/settings.json?" + cachebuster;
-		fetch(url) // Call the fetch function passing the url of the API as a parameter
-		.then(response => response.json())
-		.then(responseJson => {
-			trackSettings = responseJson;
-				
-			 var source = document.getElementById('player');
-			 source.src = trackSettings.audioUrl;
-			 $('#track-title').empty();
-			 $('#track-title').append(trackSettings.id);	
-		     $('#difficulty').empty();
-			 $('#difficulty').append(trackSettings.difficulty);	
-			 
-		})
-		.catch(function(error) {
-				document.getElementById("sheet-music").classList.remove('hidden');
-				$('#sheet-music').append("Error loading sheet music. Error:" + error); 
-		});
+	{	
+	     var track = siteSettings.tracks.find(t => t.id == id);
+		 var source = document.getElementById('player');
+		 source.src = trackSettings.audioUrl;
+		 $('#track-title').empty();
+		 $('#track-title').append(track.id);	
+		 $('#difficulty').empty();
+		 $('#difficulty').append(track.difficulty);	
 	}
 	
 	
 	function loadSiteSettings()
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000)
-		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/root/root.json?" + cachebuster;
+		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/root/settings.json?" + cachebuster;
 		fetch(url) // Call the fetch function passing the url of the API as a parameter
 		.then(response => response.json())
 		.then(responseJson => {
@@ -145,6 +132,9 @@ let stateCheck = setInterval(() => {
 	  <source src="" type="audio/mpeg">
 	Your browser does not support the audio element.
 	</audio>
+	<br />
+	<input type="checkbox" value="Loop" id="loop" class="form-check-input" />
+	<label for="loop" class = "form-check-label">Loop</label>
 	<br />
 	<br />
 	<button type="button" class="btn btn-primary" onclick="revealSheetMusic()">Reveal</button>
