@@ -37,7 +37,9 @@ body {
 
 <script>
 	var id = 1;
-	var settings = null;
+	var trackSettings = null;
+	var siteSettings = null;
+	
 	function loadTrack(id)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000)
@@ -45,17 +47,35 @@ body {
 		fetch(url) // Call the fetch function passing the url of the API as a parameter
 		.then(response => response.json())
 		.then(responseJson => {
-			settings = responseJson;
+			trackSettings = responseJson;
 				
 			 var source = document.getElementById('player');
-			 source.src = settings.audioUrl;
-			 $('#track-title').append(settings.id);	
+			 source.src = trackSettings.audioUrl;
+			 $('#track-title').append(trackSettings.id);	
 		})
 		.catch(function(error) {
 				document.getElementById("sheet-music").classList.remove('hidden');
 				$('#sheet-music').append("Error loading sheet music. Error:" + error); 
 		});
 	}
+	
+	
+	function loadSiteSettings()
+	{
+		var cachebuster = Math.round(new Date().getTime() / 1000)
+		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/root/root.json?" + cachebuster;
+		fetch(url) // Call the fetch function passing the url of the API as a parameter
+		.then(response => response.json())
+		.then(responseJson => {
+			siteSettings = responseJson;
+			loadTrack(1);
+		})
+		.catch(function(error) {
+				document.getElementById("sheet-music").classList.remove('hidden');
+				$('#sheet-music').append("Error loading site settings. Error:" + error); 
+		});
+	}
+	
 	function renderSheetMusic (url)
 	{
 		var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-music");
@@ -69,7 +89,7 @@ body {
 	
 	function revealSheetMusic(id)
 	{
-		renderSheetMusic(settings.musicXmlUrl);
+		renderSheetMusic(trackSettings.musicXmlUrl);
 	}
 	
 
@@ -91,7 +111,7 @@ body {
 let stateCheck = setInterval(() => {
   if (document.readyState === 'complete') {
     clearInterval(stateCheck);
-    loadTrack(1);
+    loadSiteSettings();
   }
 }, 100);
 </script>
