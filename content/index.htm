@@ -94,6 +94,7 @@ a.report-a-problem:hover { color: white; }
 
 	function next()
 	{
+		$('#sheet-music').empty();
 		if(id + 1 > settings.tracks.length)
 		{
 			document.getElementById("sheet-music").classList.remove('hidden');
@@ -109,6 +110,7 @@ a.report-a-problem:hover { color: white; }
 	
 	function previous()
 	{
+		$('#sheet-music').empty();
 		if (id > 1)
 		{
 			id -= 1;
