@@ -36,16 +36,66 @@ body {
 <script src="js/opensheetmusicdisplay.min.js"></script>
 
 <script>
-	function renderSheetMusic ()
+	var id = 1;
+	var settings = null;
+	function loadSettings(id)
+	{
+		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/audio/" + id + "/settings.json";
+		fetch(url) // Call the fetch function passing the url of the API as a parameter
+		.then(function(data) {
+			var settings = data.json();
+			return settings;
+		})
+		.catch(function(error) {
+				document.getElementById("sheet-music").classList.remove('hidden');
+				$('#sheet-music').append("Error loading sheet music. Error:" + error); 
+		});
+	}
+	function renderSheetMusic (url)
 	{
 		var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-music");
-		osmd.load("https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/audio/1/1.musicxml").then(
+		osmd.load(url).then(
 		  function() {
 			osmd.render();
 		  }
 		);
 		document.getElementById("sheet-music").classList.remove('hidden');
 	}
+	
+	function revealSheetMusic(id)
+	{
+		renderSheetMusic(settings.musicXmlUrl);
+	}
+	
+	function loadTrack(id)
+	{
+		settings = loadSettings(id);
+		var source = document.getElementById('player');
+		source.src = settings.audioUrl;
+		$('#track-title').append(settings.id);
+	}
+	
+	function next()
+	{
+		id += 1;
+		loadTrack(id);
+	}
+	
+	function previous()
+	{
+		if (id > 0)
+		{
+			id -= 1;
+			loadTrack(id);
+		}
+	}
+	
+let stateCheck = setInterval(() => {
+  if (document.readyState === 'complete') {
+    clearInterval(stateCheck);
+    loadTrack(1);
+  }
+}, 100);
 </script>
 
 <body>
@@ -55,16 +105,16 @@ body {
 </nav>
 
 <div class="container text-center push">
-	<h3>1</h3>
+	<h3 id="track-title"></h3>
 	<br />
-	<audio controls>
-	  <source src="https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/audio/1/1.mp3" type="audio/mpeg">
+	<audio controls id="player">
+	  <source src="" type="audio/mpeg">
 	Your browser does not support the audio element.
 	</audio>
 	<br />
 	<br />
-	<button type="button" class="btn btn-primary" onclick="renderSheetMusic()">Reveal</button>
-	<button type="button" class="btn btn-light">Next</button>
+	<button type="button" class="btn btn-primary" onclick="revealSheetMusic()">Reveal</button>
+	<button type="button" class="btn btn-light" onclick="next()">Next</button>
 	<div id="sheet-music" name="sheet-music" class="hidden">
 
 	</div>
