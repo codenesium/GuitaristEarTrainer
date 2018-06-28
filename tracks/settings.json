@@ -7,6 +7,14 @@
 "audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/audio.mp3",
 "musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/file.musicxml",
 "tags":["country"]
+},
+{
+"id":2,
+"name":"2",
+"difficulty":6,
+"audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/audio.mp3",
+"musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/file.musicxml",
+"tags":["country"]
 }
 ]
 }

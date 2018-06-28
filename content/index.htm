@@ -27,6 +27,11 @@ body {
 margin-top:20px;
 }
 
+#reveal{
+margin-left:10px;
+margin-right:10px;
+}
+
 a.report-a-problem  { color: white; }
 a.report-a-problem:active { color: white; }
 a.report-a-problem:visited { color: white; }
@@ -39,7 +44,7 @@ a.report-a-problem:hover { color: white; }
 
 <script>
 	"use strict";
-	var id = 0;
+	var id = 1;
 	var settings = null;
 	
 	function loadTrack(id)
@@ -81,9 +86,9 @@ a.report-a-problem:hover { color: white; }
 		document.getElementById("sheet-music").classList.remove('hidden');
 	}
 	
-	function revealSheetMusic(id)
-	{
-		renderSheetMusic(trackSettings.musicXmlUrl);
+	function revealSheetMusic()
+	{	var track = settings.tracks.find(t => t.id == id);
+		renderSheetMusic(track.musicXmlUrl);
 	}
 	
 
@@ -147,9 +152,10 @@ let stateCheck = setInterval(() => {
 	<label for="loop" class = "form-check-label">Loop</label>
 	<br />
 	<br />
-		<button type="button" class="btn btn-light" onclick="previous()">Previous</button>
-	<button type="button" class="btn btn-primary" onclick="revealSheetMusic()">Reveal</button>
-	<button type="button" class="btn btn-light" onclick="next()">Next</button>
+			
+    <button type="button" class="btn btn-default" onclick="previous()"><i class="fas fa-angle-double-left"></i></button>
+	<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic()">Reveal</button>
+	<button type="button" class="btn btn-default" onclick="next()"><i class="fas fa-angle-double-right"></i></button>
 	<div id="sheet-music" name="sheet-music" class="hidden">
 
 	</div>
@@ -161,6 +167,6 @@ let stateCheck = setInterval(() => {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 </html>
