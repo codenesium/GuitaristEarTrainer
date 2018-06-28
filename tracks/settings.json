@@ -11,7 +11,7 @@
 {
 "id":2,
 "name":"2",
-"difficulty":6,
+"difficulty":1,
 "audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/2.mp3",
 "musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/2.xml",
 "tags":["country"]
