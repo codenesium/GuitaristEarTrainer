@@ -38,13 +38,18 @@ body {
 <script>
 	var id = 1;
 	var settings = null;
-	function loadSettings(id)
+	function loadTrack(id)
 	{
-		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/audio/" + id + "/settings.json";
+		var cachebuster = Math.round(new Date().getTime() / 1000)
+		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/audio/" + id + "/settings.json?" + cachebuster;
 		fetch(url) // Call the fetch function passing the url of the API as a parameter
-		.then(function(data) {
-			var settings = data.json();
-			return settings;
+		.then(response => response.json())
+		.then(responseJson => {
+			settings = responseJson;
+				
+			 var source = document.getElementById('player');
+			 source.src = settings.audioUrl;
+			 $('#track-title').append(settings.id);	
 		})
 		.catch(function(error) {
 				document.getElementById("sheet-music").classList.remove('hidden');
@@ -67,14 +72,7 @@ body {
 		renderSheetMusic(settings.musicXmlUrl);
 	}
 	
-	function loadTrack(id)
-	{
-		settings = loadSettings(id);
-		var source = document.getElementById('player');
-		source.src = settings.audioUrl;
-		$('#track-title').append(settings.id);
-	}
-	
+
 	function next()
 	{
 		id += 1;
