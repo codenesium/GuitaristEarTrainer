@@ -22,15 +22,14 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
-}
+
+
+a.report-a-problem  { color: white; }
+a.report-a-problem:active { color: white; }
+a.report-a-problem:visited { color: white; }
+a.report-a-problem:hover { color: white; }
+
+
 </style>
 
 <script src="js/opensheetmusicdisplay.min.js"></script>
@@ -43,7 +42,7 @@ body {
 	function loadTrack(id)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000)
-		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/audio/" + id + "/settings.json?" + cachebuster;
+		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/" + id + "/settings.json?" + cachebuster;
 		fetch(url) // Call the fetch function passing the url of the API as a parameter
 		.then(response => response.json())
 		.then(responseJson => {
@@ -51,7 +50,11 @@ body {
 				
 			 var source = document.getElementById('player');
 			 source.src = trackSettings.audioUrl;
+			 $('#track-title').empty();
 			 $('#track-title').append(trackSettings.id);	
+		     $('#difficulty').empty();
+			 $('#difficulty').append(trackSettings.difficulty);	
+			 
 		})
 		.catch(function(error) {
 				document.getElementById("sheet-music").classList.remove('hidden');
@@ -95,8 +98,17 @@ body {
 
 	function next()
 	{
-		id += 1;
-		loadTrack(id);
+		if(id + 1 > siteSettings.trackCount)
+		{
+			document.getElementById("sheet-music").classList.remove('hidden');
+			$('#sheet-music').remove();
+			$('#sheet-music').append("You have reached the end. Congratulations!"); 
+		}
+		else
+		{
+			id += 1;
+			loadTrack(id);
+		}
 	}
 	
 	function previous()
@@ -120,10 +132,14 @@ let stateCheck = setInterval(() => {
 
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Guitarist Ear Trainer</a>
+    <a href="mailto:codenesium.com" class="report-a-problem">Report a problem</a>
 </nav>
 
 <div class="container text-center push">
-	<h3 id="track-title"></h3>
+	<h5>Title: <span class="badge badge-primary" id="track-title">Title</span></h5>
+	<h5>Difficulty: <span class="badge badge-primary" id="difficulty">Difficulty</span></h5>
+	<br />
+	<br />
 	<br />
 	<audio controls id="player">
 	  <source src="" type="audio/mpeg">
@@ -139,12 +155,6 @@ let stateCheck = setInterval(() => {
 </div>
 
 
-<footer class="footer">
-  <div class="container">
-	<span class="text-muted"></span>
-  </div>
-</footer>
-	
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
