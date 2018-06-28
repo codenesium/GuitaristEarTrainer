@@ -23,6 +23,9 @@ body {
   margin-bottom: 60px;
 }
 
+#sheet-music{
+margin-top:20px;
+}
 
 a.report-a-problem  { color: white; }
 a.report-a-problem:active { color: white; }
@@ -35,14 +38,15 @@ a.report-a-problem:hover { color: white; }
 <script src="js/opensheetmusicdisplay.min.js"></script>
 
 <script>
-	var id = 1;
-	var siteSettings = null;
+	"use strict";
+	var id = 0;
+	var settings = null;
 	
 	function loadTrack(id)
 	{	
-	     var track = siteSettings.tracks.find(t => t.id == id);
+	     var track = settings.tracks.find(t => t.id == id);
 		 var source = document.getElementById('player');
-		 source.src = trackSettings.audioUrl;
+		 source.src = track.audioUrl;
 		 $('#track-title').empty();
 		 $('#track-title').append(track.id);	
 		 $('#difficulty').empty();
@@ -53,12 +57,12 @@ a.report-a-problem:hover { color: white; }
 	function loadSiteSettings()
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000)
-		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/root/settings.json?" + cachebuster;
+		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/settings.json?" + cachebuster;
 		fetch(url) // Call the fetch function passing the url of the API as a parameter
 		.then(response => response.json())
 		.then(responseJson => {
-			siteSettings = responseJson;
-			loadTrack(1);
+			settings = responseJson;
+			loadTrack(id);
 		})
 		.catch(function(error) {
 				document.getElementById("sheet-music").classList.remove('hidden');
@@ -85,11 +89,11 @@ a.report-a-problem:hover { color: white; }
 
 	function next()
 	{
-		if(id + 1 > siteSettings.trackCount)
+		if(id + 1 > settings.tracks.length)
 		{
 			document.getElementById("sheet-music").classList.remove('hidden');
-			$('#sheet-music').remove();
-			$('#sheet-music').append("You have reached the end. Congratulations!"); 
+			$('#sheet-music').empty();
+			$('#sheet-music').append('<div class="alert alert-success" role="alert">You must be a master because you made it to the end. Congratulations!</div>'); 
 		}
 		else
 		{
@@ -106,6 +110,12 @@ a.report-a-problem:hover { color: white; }
 			loadTrack(id);
 		}
 	}
+	function loopClicked()
+	{
+		var source = document.getElementById('player');
+		source.loop = document.getElementById('loop').checked;
+	}
+	
 	
 let stateCheck = setInterval(() => {
   if (document.readyState === 'complete') {
@@ -133,10 +143,11 @@ let stateCheck = setInterval(() => {
 	Your browser does not support the audio element.
 	</audio>
 	<br />
-	<input type="checkbox" value="Loop" id="loop" class="form-check-input" />
+	<input type="checkbox" value="Loop" id="loop" class="form-check-input"  onclick="loopClicked()"/>
 	<label for="loop" class = "form-check-label">Loop</label>
 	<br />
 	<br />
+		<button type="button" class="btn btn-light" onclick="previous()">Previous</button>
 	<button type="button" class="btn btn-primary" onclick="revealSheetMusic()">Reveal</button>
 	<button type="button" class="btn btn-light" onclick="next()">Next</button>
 	<div id="sheet-music" name="sheet-music" class="hidden">
