@@ -2,15 +2,16 @@
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="3.0">
   <identification>
+    <rights>Copyright, All rights reserved</rights>
     <encoding>
       <software>Flat</software>
       <encoding-date>2018-06-28</encoding-date>
     </encoding>
-    <source>https://flat.io/score/5b3567cc589b424060237078-1</source>
+    <source>https://flat.io/score/5b3567cc589b424060237078-2</source>
   </identification>
   <credit>
     <credit-type>title</credit-type>
-    <credit-words>1</credit-words>
+    <credit-words>2</credit-words>
   </credit>
   <part-list>
     <score-part id="P1">
@@ -87,50 +88,16 @@
       </direction>
       <note>
         <pitch>
-          <step>A</step>
-          <octave>3</octave>
-        </pitch>
-        <duration>1</duration>
-        <voice>1</voice>
-        <type>quarter</type>
-        <staff>1</staff>
-        <notations>
-          <technical>
-            <fret>2</fret>
-            <string>3</string>
-          </technical>
-        </notations>
-      </note>
-      <note>
-        <pitch>
-          <step>C</step>
-          <alter>1</alter>
+          <step>D</step>
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <accidental>sharp</accidental>
         <staff>1</staff>
         <notations>
           <technical>
-            <fret>2</fret>
-            <string>2</string>
-          </technical>
-        </notations>
-      </note>
-      <note>
-        <pitch>
-          <step>B</step>
-          <octave>3</octave>
-        </pitch>
-        <duration>1</duration>
-        <voice>1</voice>
-        <type>quarter</type>
-        <staff>1</staff>
-        <notations>
-          <technical>
-            <fret>0</fret>
+            <fret>3</fret>
             <string>2</string>
           </technical>
         </notations>
@@ -138,7 +105,7 @@
       <note>
         <pitch>
           <step>A</step>
-          <octave>3</octave>
+          <octave>4</octave>
         </pitch>
         <duration>1</duration>
         <voice>1</voice>
@@ -146,8 +113,24 @@
         <staff>1</staff>
         <notations>
           <technical>
-            <fret>2</fret>
-            <string>3</string>
+            <fret>5</fret>
+            <string>1</string>
+          </technical>
+        </notations>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>half</type>
+        <staff>1</staff>
+        <notations>
+          <technical>
+            <fret>3</fret>
+            <string>1</string>
           </technical>
         </notations>
       </note>
