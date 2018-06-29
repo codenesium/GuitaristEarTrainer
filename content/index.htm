@@ -48,7 +48,7 @@ margin-top:150px;
 	function loadTrack(id)
 	{	
 	     var track = settings.tracks.find(t => t.id == id);
-		 var player = $('#player')
+		 var player = $('#player')[0];
 		 player.src = track.audioUrl;
 		 $('#track-title').empty();
 		 $('#track-title').append(id);	
@@ -106,8 +106,8 @@ margin-top:150px;
 		{
 			window.trackId += 1;
 			loadTrack(window.trackId);
-			var source = 	$('#player');
-			source.play();
+			var player = $('#player')[0];
+			player.play();
 		}
 	}
 	
@@ -122,8 +122,8 @@ margin-top:150px;
 	}
 	function loopClicked()
 	{
-		var player = $('#player')
-		player.loop = $('#loop').checked;
+		var player = $('#player')[0];
+		player.loop = $('#loop')[0].checked;
 	}
 	
 	
