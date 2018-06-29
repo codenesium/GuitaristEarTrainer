@@ -85,11 +85,12 @@ margin-top:150px;
 		var cachebuster = Math.round(new Date().getTime() / 1000);
 	
 			
-			$('#sheet-music').alphaTab("destroy");
-			alphaTab = $('#sheet-music').alphaTab({
-			  file: url + '?' + cachebuster,
-			  staves: 'score-tab'
-			});
+		$('#sheet-music').alphaTab("destroy");
+		
+		$('#sheet-music').alphaTab({
+		  file: url + '?' + cachebuster,
+		  staves: 'score-tab'
+		});
 		document.getElementById("sheet-music").classList.remove('hidden');
 	}
 	
