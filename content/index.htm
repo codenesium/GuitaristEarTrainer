@@ -82,9 +82,9 @@ margin-top:150px;
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
 			
-			window.AlphaTab = null;
-			AlphaTab.Environment.PlatformInit();
-
+			var AlphaTab = {};
+			AlphaTab.Environment = function (){
+			};
 			$('#sheet-music').alphaTab({
 			  file: url + '?' + cachebuster,
 			  staves: 'score-tab'
