@@ -61,7 +61,7 @@ a.report-a-problem:hover { color: white; }
 	
 	function loadSiteSettings()
 	{
-		var cachebuster = Math.round(new Date().getTime() / 1000)
+		var cachebuster = Math.round(new Date().getTime() / 1000);
 		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/settings.json?" + cachebuster;
 		fetch(url) // Call the fetch function passing the url of the API as a parameter
 		.then(response => response.json())
@@ -77,8 +77,9 @@ a.report-a-problem:hover { color: white; }
 	
 	function renderSheetMusic (url)
 	{
+		var cachebuster = Math.round(new Date().getTime() / 1000);
 		var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-music");
-		osmd.load(url).then(
+		osmd.load(url + "?" + cachebuster).then(
 		  function() {
 			osmd.render();
 		  }
@@ -87,7 +88,8 @@ a.report-a-problem:hover { color: white; }
 	}
 	
 	function revealSheetMusic()
-	{	var track = settings.tracks.find(t => t.id == id);
+	{	
+		var track = settings.tracks.find(t => t.id == id);
 		renderSheetMusic(track.musicXmlUrl);
 	}
 	
