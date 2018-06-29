@@ -77,7 +77,6 @@ a.report-a-problem:hover { color: white; }
 	
 	function renderSheetMusic (url)
 	{
-		document.getElementById("sheet-music").empty();
 		var cachebuster = Math.round(new Date().getTime() / 1000);
 		var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-music");
 		osmd.load(url + "?" + cachebuster).then(
