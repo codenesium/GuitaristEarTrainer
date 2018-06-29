@@ -84,13 +84,13 @@ margin-top:150px;
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
 	
-			
 		$('#sheet-music').alphaTab("destroy");
 		
 		$('#sheet-music').alphaTab({
 		  file: url + '?' + cachebuster,
 		  staves: 'score-tab'
 		});
+		
 		document.getElementById("sheet-music").classList.remove('hidden');
 	}
 	
@@ -100,7 +100,6 @@ margin-top:150px;
 		var track = settings.tracks.find(t => t.id == id);
 		renderSheetMusic(track.musicXmlUrl);
 	}
-	
 
 	function next()
 	{
@@ -171,9 +170,7 @@ let stateCheck = setInterval(() => {
     <button type="button" class="btn btn-default" onclick="previous()"><i class="fas fa-angle-double-left"></i></button>
 	<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic()">Reveal</button>
 	<button type="button" class="btn btn-default" onclick="next()"><i class="fas fa-angle-double-right"></i></button>
-	<div id="sheet-music" name="sheet-music" class="hidden">
-
-	</div>
+	<div id="sheet-music" name="sheet-music" class="hidden"></div>
 </div>
 
 
