@@ -163,15 +163,16 @@ let stateCheck = setInterval(() => {
 			<h5>Title: <span class="badge badge-primary" id="track-title">Title</span></h5>
 			<h5>Difficulty: <span class="badge badge-primary" id="difficulty">Difficulty</span></h5>
 			<br />
-			<br />
-			<br />
 			<audio controls id="player">
 			  <source src="" type="audio/mpeg">
 			Your browser does not support the audio element.
 			</audio>
 			<br />
+				<br />
 			<input type="checkbox" value="Loop" id="loop" class="form-check-input"  onclick="loopClicked()"/>
 			<label for="loop" class = "form-check-label">Loop</label>
+			<br />
+				<br />
 			<select class="form-control" id="jump" onchange="loadTrack($('#jump').val())">		  
 			</select>
 
