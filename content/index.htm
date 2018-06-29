@@ -65,10 +65,20 @@ margin-top:150px;
 		.then(responseJson => {
 			settings = responseJson;
 			loadTrack(id);
+			loadJump(settings);
 		})
 		.catch(function(error) {
 				$('#sheet-music').removeClass('hidden');
 				$('#sheet-music').append("Error loading site settings. Error:" + error); 
+		});
+	}
+	
+	
+	function loadJump(settings)
+	{
+		$.each(settings.tracks, function(i, track) 
+		{ 
+		   $('#jump').append(new Option(track.name,track.id) );
 		});
 	}
 	
@@ -92,6 +102,7 @@ margin-top:150px;
 		var track = settings.tracks.find(t => t.id == id);
 		renderSheetMusic(track.musicXmlUrl);
 	}
+	
 
 	function next(id)
 	{
@@ -146,24 +157,36 @@ let stateCheck = setInterval(() => {
 </nav>
 
 <div class="container text-center push">
-	<h5>Title: <span class="badge badge-primary" id="track-title">Title</span></h5>
-	<h5>Difficulty: <span class="badge badge-primary" id="difficulty">Difficulty</span></h5>
-	<br />
-	<br />
-	<br />
-	<audio controls id="player">
-	  <source src="" type="audio/mpeg">
-	Your browser does not support the audio element.
-	</audio>
-	<br />
-	<input type="checkbox" value="Loop" id="loop" class="form-check-input"  onclick="loopClicked()"/>
-	<label for="loop" class = "form-check-label">Loop</label>
-	<br />
-	<br />
-			
-    <button type="button" class="btn btn-default" onclick="previous(window.trackId)"><i class="fas fa-angle-double-left"></i></button>
-	<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic(window.trackId)">Reveal</button>
-	<button type="button" class="btn btn-default" onclick="next(window.trackId)"><i class="fas fa-angle-double-right"></i></button>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+			<h5>Title: <span class="badge badge-primary" id="track-title">Title</span></h5>
+			<h5>Difficulty: <span class="badge badge-primary" id="difficulty">Difficulty</span></h5>
+			<br />
+			<br />
+			<br />
+			<audio controls id="player">
+			  <source src="" type="audio/mpeg">
+			Your browser does not support the audio element.
+			</audio>
+			<br />
+			<input type="checkbox" value="Loop" id="loop" class="form-check-input"  onclick="loopClicked()"/>
+			<label for="loop" class = "form-check-label">Loop</label>
+
+					<label for="jump">Jump</label>
+					<select class="form-control" id="jump" onchange="loadTrack($('#jump').val())">		  
+					</select>
+
+			<br />
+					
+			<button type="button" class="btn btn-default" onclick="previous(window.trackId)"><i class="fas fa-angle-double-left"></i></button>
+			<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic(window.trackId)">Reveal</button>
+			<button type="button" class="btn btn-default" onclick="next(window.trackId)"><i class="fas fa-angle-double-right"></i></button>
+		</div>
+		
+		<div class="col"></div>
+    </div>
+  
 	<div id="sheet-music" name="sheet-music" class="hidden"></div>
 </div>
 
