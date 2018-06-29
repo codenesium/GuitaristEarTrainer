@@ -81,12 +81,13 @@ margin-top:150px;
 	function renderSheetMusic (url)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
-		
+			
+			window.AlphaTab = null;
 
 			$('#sheet-music').alphaTab({
 			  file: url + '?' + cachebuster,
 			  staves: 'score-tab'
-			})
+			});
 
 
 		document.getElementById("sheet-music").classList.remove('hidden');
