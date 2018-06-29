@@ -48,8 +48,8 @@ margin-top:150px;
 	function loadTrack(id)
 	{	
 	     var track = settings.tracks.find(t => t.id == id);
-		 var source = document.getElementById('player');
-		 source.src = track.audioUrl;
+		 var player = $('#player')
+		 player.src = track.audioUrl;
 		 $('#track-title').empty();
 		 $('#track-title').append(id);	
 		 $('#difficulty').empty();
@@ -130,7 +130,7 @@ margin-top:150px;
 let stateCheck = setInterval(() => {
   if (document.readyState === 'complete') {
     clearInterval(stateCheck);
-    loadSiteSettings();
+    loadSiteSettings(window.trackId);
 	 $('#sheet-music').alphaTab();	
   }
 }, 100);
@@ -140,7 +140,7 @@ let stateCheck = setInterval(() => {
 
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Guitarist Ear Trainer</a>
-    <a href="https://github.com/codenesium/GuitaristEarTrainer" class="contribute"><i class="fab fa-github"></i>Contribute</a>
+    <a href="https://github.com/codenesium/GuitaristEarTrainer" class="contribute"><i class="fab fa-github"></i> Contribute</a>
 </nav>
 
 <div class="container text-center push">
