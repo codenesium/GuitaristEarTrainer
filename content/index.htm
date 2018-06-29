@@ -89,6 +89,7 @@ a.report-a-problem:hover { color: white; }
 	
 	function revealSheetMusic()
 	{	
+		$('#sheet-music').empty();
 		var track = settings.tracks.find(t => t.id == id);
 		renderSheetMusic(track.musicXmlUrl);
 	}
