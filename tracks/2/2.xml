@@ -15,10 +15,10 @@
   </credit>
   <part-list>
     <score-part id="P1">
-      <part-name>Classical Guitar</part-name>
+      <part-name>Guitar</part-name>
       <part-abbreviation>Guit.</part-abbreviation>
       <score-instrument id="P1-I1">
-        <instrument-name>Classical Guitar</instrument-name>
+        <instrument-name>Guitar</instrument-name>
       </score-instrument>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
