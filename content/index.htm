@@ -93,10 +93,10 @@ margin-top:150px;
 		renderSheetMusic(track.musicXmlUrl);
 	}
 
-	function next()
+	function next(id)
 	{
 		$('#sheet-music').empty();
-		if(window.trackId + 1 > settings.tracks.length)
+		if(id + 1 > settings.tracks.length)
 		{
 			$('#sheet-music').removeClass('hidden');
 			$('#sheet-music').empty();
@@ -104,21 +104,23 @@ margin-top:150px;
 		}
 		else
 		{
-			window.trackId += 1;
+			id += 1;
 			loadTrack(window.trackId);
 			var player = $('#player')[0];
 			player.play();
 		}
+		window.trackId = id;
 	}
 	
-	function previous()
+	function previous(id)
 	{
 		$('#sheet-music').empty();
 		if (id > 1)
 		{
-			window.trackId -= 1;
+			id -= 1;
 			loadTrack(id);
 		}
+		window.trackId = id;
 	}
 	function loopClicked()
 	{
@@ -159,9 +161,9 @@ let stateCheck = setInterval(() => {
 	<br />
 	<br />
 			
-    <button type="button" class="btn btn-default" onclick="previous()"><i class="fas fa-angle-double-left"></i></button>
-	<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic()">Reveal</button>
-	<button type="button" class="btn btn-default" onclick="next()"><i class="fas fa-angle-double-right"></i></button>
+    <button type="button" class="btn btn-default" onclick="previous(window.trackId)"><i class="fas fa-angle-double-left"></i></button>
+	<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic(window.trackId)">Reveal</button>
+	<button type="button" class="btn btn-default" onclick="next(window.trackId)"><i class="fas fa-angle-double-right"></i></button>
 	<div id="sheet-music" name="sheet-music" class="hidden"></div>
 </div>
 
