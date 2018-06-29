@@ -50,7 +50,7 @@ margin-top:150px;
 	var id = 1;
 	var settings = null;
 	
-
+	var alphaTab = null;
 			
 			
 	function loadTrack(id)
@@ -84,8 +84,12 @@ margin-top:150px;
 	function renderSheetMusic (url)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
-			window.reloadAlphaTab();
-			 $('#sheet-music').alphaTab({
+
+			if(alphaTab != null)
+			{
+				alphaTab.destroy();
+			}
+			 alphaTab = $('#sheet-music').alphaTab({
 			  file: url + '?' + cachebuster,
 			  staves: 'score-tab'
 			});

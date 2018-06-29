@@ -18,8 +18,6 @@
 (function ($) {
     if(!$) { return }
 
-	window.reloadAlphaTab = function ()
-	{
     var api = {
         init: function(element, context, options) {
             if (!context) {
@@ -137,6 +135,5 @@
     };
     // allow plugins to add methods
     $.fn.alphaTab.fn = api;
-	}
     
 })(typeof jQuery !== 'undefined' ? jQuery : null);
