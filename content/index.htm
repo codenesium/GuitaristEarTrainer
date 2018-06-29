@@ -50,6 +50,9 @@ margin-top:150px;
 	var id = 1;
 	var settings = null;
 	
+
+			
+			
 	function loadTrack(id)
 	{	
 	     var track = settings.tracks.find(t => t.id == id);
@@ -81,14 +84,11 @@ margin-top:150px;
 	function renderSheetMusic (url)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
-			
-document.getElementById("sheet-music").classList.remove('alphaTab');
-			$('#sheet-music').alphaTab({
+			window.reloadAlphaTab();
+			 $('#sheet-music').alphaTab({
 			  file: url + '?' + cachebuster,
 			  staves: 'score-tab'
 			});
-
-
 		document.getElementById("sheet-music").classList.remove('hidden');
 	}
 	
