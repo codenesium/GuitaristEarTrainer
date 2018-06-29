@@ -132,10 +132,17 @@ margin-top:150px;
 		}
 		window.trackId = id;
 	}
+	
 	function loopClicked()
 	{
 		var player = $('#player')[0];
 		player.loop = $('#loop')[0].checked;
+	}
+	
+	function jump(id)
+	{
+		loadTrack(id);
+		window.trackId = id;
 	}
 	
 	
@@ -172,7 +179,7 @@ let stateCheck = setInterval(() => {
 			<label for="loop" class = "form-check-label">Loop</label>
 			<br />
 			<br />
-			<select class="form-control" id="jump" onchange="loadTrack($('#jump').val())">		  
+			<select class="form-control" id="jump" onchange="jump($('#jump').val())">		  
 			</select>
 
 			<br />
