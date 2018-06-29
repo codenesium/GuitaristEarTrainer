@@ -50,6 +50,7 @@ margin-top:150px;
 	     var track = settings.tracks.find(t => t.id == id);
 		 var player = $('#player')[0];
 		 player.src = track.audioUrl;
+		 $('#sheet-music').empty();
 		 $('#track-title').empty();
 		 $('#track-title').append(id);	
 		 $('#difficulty').empty();
@@ -106,7 +107,6 @@ margin-top:150px;
 
 	function next(id)
 	{
-		$('#sheet-music').empty();
 		if(id + 1 > settings.tracks.length)
 		{
 			$('#sheet-music').removeClass('hidden');
@@ -125,7 +125,6 @@ margin-top:150px;
 	
 	function previous(id)
 	{
-		$('#sheet-music').empty();
 		if (id > 1)
 		{
 			id -= 1;
@@ -168,11 +167,11 @@ let stateCheck = setInterval(() => {
 			Your browser does not support the audio element.
 			</audio>
 			<br />
-				<br />
+			<br />
 			<input type="checkbox" value="Loop" id="loop" class="form-check-input"  onclick="loopClicked()"/>
 			<label for="loop" class = "form-check-label">Loop</label>
 			<br />
-				<br />
+			<br />
 			<select class="form-control" id="jump" onchange="loadTrack($('#jump').val())">		  
 			</select>
 
