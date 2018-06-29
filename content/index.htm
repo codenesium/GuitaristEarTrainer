@@ -40,6 +40,9 @@ a.report-a-problem:visited { color: white; }
 a.report-a-problem:hover { color: white; }
 
 
+.finished {
+margin-top:150px;
+}
 </style>
 
 <script src="js/opensheetmusicdisplay.min.js"></script>
@@ -104,7 +107,7 @@ a.report-a-problem:hover { color: white; }
 		{
 			document.getElementById("sheet-music").classList.remove('hidden');
 			$('#sheet-music').empty();
-			$('#sheet-music').append('<div class="alert alert-success" role="alert">You must be a master because you made it to the end. Congratulations!</div>'); 
+			$('#sheet-music').append('<div class="alert alert-success finished" role="alert">You must be a master because you made it to the end. Congratulations!</div>'); 
 		}
 		else
 		{
