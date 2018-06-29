@@ -85,11 +85,8 @@ margin-top:150px;
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
 
-			if(alphaTab != null)
-			{
-				alphaTab.destroy();
-			}
-			 alphaTab = $('#sheet-music').alphaTab({
+			$('#sheet-music').alphaTab("destro");
+			alphaTab = $('#sheet-music').alphaTab({
 			  file: url + '?' + cachebuster,
 			  staves: 'score-tab'
 			});
