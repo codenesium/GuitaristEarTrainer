@@ -50,8 +50,7 @@ margin-top:150px;
 	var id = 1;
 	var settings = null;
 	
-     $('#sheet-music').alphaTab();
-			
+
 			
 	function loadTrack(id)
 	{	
@@ -140,6 +139,7 @@ let stateCheck = setInterval(() => {
   if (document.readyState === 'complete') {
     clearInterval(stateCheck);
     loadSiteSettings();
+	 $('#sheet-music').alphaTab();	
   }
 }, 100);
 </script>
