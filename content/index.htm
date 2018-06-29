@@ -45,7 +45,6 @@ margin-top:150px;
 }
 </style>
 
-<script src="js/opensheetmusicdisplay.min.js"></script>
 
 <script>
 	"use strict";
@@ -83,12 +82,14 @@ margin-top:150px;
 	function renderSheetMusic (url)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
-		var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet-music");
-		osmd.load(url + "?" + cachebuster).then(
-		  function() {
-			osmd.render();
-		  }
-		);
+		
+
+			$('#sheet-music').alphaTab({
+			  file: url + '?' + cachebuster,
+			  staves: 'score-tab'
+			})
+
+
 		document.getElementById("sheet-music").classList.remove('hidden');
 	}
 	
@@ -181,4 +182,6 @@ let stateCheck = setInterval(() => {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
+<script src="js/AlphaTab.js?1"></script>
+<script src="js/Jquery.AlphaTab.js?1"></script>
 </html>
