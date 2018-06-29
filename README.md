@@ -19,11 +19,11 @@ We need your help! Record a lick in Guitar Pro and upload the files and recordin
 
 # Difficulty formula
 
-1 point per note in single melody lines
-3 points per note in polyphonic lines
-1 points for ever 10 BPM in tempo
-3 points for every skip (a jump more than a major 2nd)
-4 points for every skip over an octave
-3 points if the lick does not start on tonic
-3 points if the lick does not end on tonic
-Potential bonus points if the lick is just hard for some reason. Syncopated rhythms for example.
+* 1 point per note in single melody lines
+* 3 points per note in polyphonic lines
+* 1 points for ever 10 BPM in tempo
+* 3 points for every skip (a jump more than a major 2nd)
+* 4 points for every skip over an octave
+* 3 points if the lick does not start on tonic
+* 3 points if the lick does not end on tonic
+* Potential bonus points if the lick is just hard for some reason. Syncopated rhythms for example.
