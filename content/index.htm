@@ -18,10 +18,6 @@
 {
 margin-top:100px;
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
 
 #sheet-music{
 position:relative;
@@ -33,11 +29,10 @@ margin-left:10px;
 margin-right:10px;
 }
 
-a.report-a-problem  { color: white; }
-a.report-a-problem:active { color: white; }
-a.report-a-problem:visited { color: white; }
-a.report-a-problem:hover { color: white; }
-
+a.contribute  { color: white; }
+a.contribute:active { color: white; }
+a.contribute:visited { color: white; }
+a.contribute:hover { color: white; }
 
 .finished {
 margin-top:150px;
@@ -47,24 +42,21 @@ margin-top:150px;
 
 <script>
 	"use strict";
-	var id = 1;
+	window.trackId = 1;
 	var settings = null;
-	
-
-			
+		
 	function loadTrack(id)
 	{	
 	     var track = settings.tracks.find(t => t.id == id);
 		 var source = document.getElementById('player');
 		 source.src = track.audioUrl;
 		 $('#track-title').empty();
-		 $('#track-title').append(track.id);	
+		 $('#track-title').append(id);	
 		 $('#difficulty').empty();
 		 $('#difficulty').append(track.difficulty);	
 	}
-	
-	
-	function loadSiteSettings()
+
+	function loadSiteSettings(id)
 	{
 		var cachebuster = Math.round(new Date().getTime() / 1000);
 		var url = "https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/settings.json?" + cachebuster;
@@ -75,7 +67,7 @@ margin-top:150px;
 			loadTrack(id);
 		})
 		.catch(function(error) {
-				document.getElementById("sheet-music").classList.remove('hidden');
+				$('#sheet-music').removeClass('hidden');
 				$('#sheet-music').append("Error loading site settings. Error:" + error); 
 		});
 	}
@@ -91,10 +83,10 @@ margin-top:150px;
 		  staves: 'score-tab'
 		});
 		
-		document.getElementById("sheet-music").classList.remove('hidden');
+		$('#"sheet-music').removeClass('hidden');
 	}
 	
-	function revealSheetMusic()
+	function revealSheetMusic(id)
 	{	
 		$('#sheet-music').empty();
 		var track = settings.tracks.find(t => t.id == id);
@@ -104,17 +96,17 @@ margin-top:150px;
 	function next()
 	{
 		$('#sheet-music').empty();
-		if(id + 1 > settings.tracks.length)
+		if(window.trackId + 1 > settings.tracks.length)
 		{
-			document.getElementById("sheet-music").classList.remove('hidden');
+			$('#sheet-music').removeClass('hidden');
 			$('#sheet-music').empty();
 			$('#sheet-music').append('<div class="alert alert-success finished" role="alert">You must be a master because you made it to the end. Congratulations!</div>'); 
 		}
 		else
 		{
-			id += 1;
-			loadTrack(id);
-			var source = document.getElementById('player');
+			window.trackId += 1;
+			loadTrack(window.trackId);
+			var source = 	$('#player');
 			source.play();
 		}
 	}
@@ -124,14 +116,14 @@ margin-top:150px;
 		$('#sheet-music').empty();
 		if (id > 1)
 		{
-			id -= 1;
+			window.trackId -= 1;
 			loadTrack(id);
 		}
 	}
 	function loopClicked()
 	{
-		var source = document.getElementById('player');
-		source.loop = document.getElementById('loop').checked;
+		var player = $('#player')
+		player.loop = $('#loop').checked;
 	}
 	
 	
@@ -148,7 +140,7 @@ let stateCheck = setInterval(() => {
 
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Guitarist Ear Trainer</a>
-    <a href="mailto:support@codenesium.com?subject=GuitaristEarTrainer issue" class="report-a-problem">Report a problem</a>
+    <a href="https://github.com/codenesium/GuitaristEarTrainer" class="contribute"><i class="fab fa-github"></i>Contribute</a>
 </nav>
 
 <div class="container text-center push">
