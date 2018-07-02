@@ -1,20 +1,32 @@
 {
 "tracks":[
-{
-"id":1,
-"name":"1",
-"difficulty":1,
-"audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/1.mp3",
-"musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/1.gp5",
-"tags":["country"]
-},
-{
-"id":2,
-"name":"2",
-"difficulty":1,
-"audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/2.mp3",
-"musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/2.gp5",
-"tags":["country"]
-}
+	{
+	"id":1,
+	"name":"1",
+	"difficulty":1,
+	"audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/1.mp3",
+	"musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/1/1.gp",
+	"tags":["country"],
+	"inspiration":"",
+	"key":"",
+	"mode":"",
+	"firstNote":"",
+	"instrument":"guitar",
+	"attribution":""
+	},
+	{
+	"id":2,
+	"name":"2",
+	"difficulty":1,
+	"audioUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/2.mp3",
+	"musicXmlUrl":"https://raw.githubusercontent.com/codenesium/GuitaristEarTrainer/master/tracks/2/2.gp5",
+	"tags":["country"],
+	"inspiration":"",
+	"key":"",
+	"mode":"",
+	"firstNote":"",
+	"instrument":"guitar",
+	 "attribution":""
+	}
 ]
 }
