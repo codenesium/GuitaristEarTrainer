@@ -65,6 +65,9 @@ margin-top:150px;
 		 $('#track-title').append(id);	
 		 $('#difficulty').empty();
 		 $('#difficulty').append(track.difficulty);	
+		 $('#firstNote').empty();
+		 $('#firstNote').append(track.firstNote);	
+		 
 	}
 
 	function loadSiteSettings(id)
@@ -178,6 +181,7 @@ let stateCheck = setInterval(() => {
 		<div class="col">
 			<h5>Title: <span class="badge badge-primary" id="track-title">Title</span></h5>
 			<h5>Difficulty: <span class="badge badge-primary" id="difficulty">Difficulty</span></h5>
+			<h5>First Note: <span class="badge badge-primary" id="firstNote">First Note</span></h5>
 			<br />
 			<audio controls id="player">
 			  <source src="" type="audio/mpeg">
@@ -191,9 +195,7 @@ let stateCheck = setInterval(() => {
 			<br />
 			<select class="form-control" id="jump" onchange="jump($('#jump').val())">		  
 			</select>
-
 			<br />
-					
 			<button type="button" class="btn btn-default" onclick="previous(window.trackId)"><i class="fas fa-angle-double-left"></i></button>
 			<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic(window.trackId)">Reveal</button>
 			<button type="button" class="btn btn-default" onclick="next(window.trackId)"><i class="fas fa-angle-double-right"></i></button>
