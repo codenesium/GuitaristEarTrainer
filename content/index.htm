@@ -206,9 +206,9 @@ let stateCheck = setInterval(() => {
 			<select class="form-control" id="jump" onchange="jump($('#jump').val())">		  
 			</select>
 			<br />
-			<button type="button" class="btn btn-default" onclick="previous(window.trackId)"><i class="fas fa-angle-double-left"></i></button>
-			<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic(window.trackId)">Reveal</button>
-			<button type="button" class="btn btn-default" onclick="next(window.trackId)"><i class="fas fa-angle-double-right"></i></button>
+			<button type="button" class="btn btn-default" onclick="previous(parseInt(window.trackId))"><i class="fas fa-angle-double-left"></i></button>
+			<button type="button" class="btn btn-primary" id="reveal" onclick="revealSheetMusic(parseInt(window.trackId))">Reveal</button>
+			<button type="button" class="btn btn-default" onclick="next(parseInt(window.trackId))"><i class="fas fa-angle-double-right"></i></button>
 		</div>
 		
 		<div class="col"></div>
